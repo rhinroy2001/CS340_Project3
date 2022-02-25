@@ -13,5 +13,6 @@ public class Main {
             Word word = new Word(reader.next().toLowerCase());
             hashTable1.put(word);
         }
+
     }
 }
