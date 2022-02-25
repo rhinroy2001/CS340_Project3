@@ -1,40 +1,42 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class HashTable{
+public class HashTable implements Iterable<Word>{
     int slots;
-    int key;
-    LinkedList<String> bucket = new LinkedList<String>();
     LinkedList[] hashTable;
 
     public HashTable(int slots){
         this.slots = slots;
-        LinkedList[] hashTable = new LinkedList[slots];
+        hashTable = new LinkedList[slots];
         for(int i = 0; i < slots; i++){
-            hashTable[i] = bucket;
+            hashTable[i] = new LinkedList<Word>();
         }
     }
 
-    public void put( Word word){
-        //LinkedList<String> temp = new LinkedList<String>();
+    public void put(String value){
+        Word word = new Word(value);
+        int key = Math.abs(word.hashCode()%slots);
         boolean found = false;
-        ListIterator<String> wordIterator = bucket.listIterator();
-        for(int i = 0; i < slots; i++){
-            bucket = hashTable[i];
-            while(bucket.listIterator().hasNext()){
-                if(bucket.listIterator().equals(word)){
-                    word.increaseOccurrences();
-                    word.steps = bucket.indexOf(word);
-                    found = true;
-                }
+        LinkedList<Word> bucket = hashTable[key];
+        ListIterator<Word> bucketIterator = bucket.listIterator();
+        while(bucketIterator.hasNext()){
+            Word w = bucketIterator.next();
+            if(word.equals(w)) {
+                w.increaseOccurrences();
+                found = true;
             }
         }
-        if(found == false){
-            key = Math.abs(word.hashCode()%slots);
+        if(!found){
+            word.setSteps(bucket.size());
+            word.increaseOccurrences();
             hashTable[key].add(word);
-            word.setSteps(hashTable[key].indexOf(word));
         }
     }
 
+    @Override
+    public Iterator<Word> iterator() {
+        return null;
+    }
 }
