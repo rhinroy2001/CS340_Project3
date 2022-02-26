@@ -9,6 +9,10 @@ public class Word {
         this.value = word;
     }
 
+    public String getValue(){
+        return value + ",";
+    }
+
     public int getOccurrences(){
         return occurrences;
     }

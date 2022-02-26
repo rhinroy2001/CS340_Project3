@@ -1,12 +1,9 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         File file = new File("src/main/resources/LittleWomen.txt");
         Scanner reader = new Scanner(file);
         HashTable hashTable500 = new HashTable(500);
@@ -22,6 +19,10 @@ public class Main {
             hashTable5000.put(word);
             hashTable10000.put(word);
         }
-        System.out.println();
+        hashTable500.writeToCSV();
+//        hashTable1000.writeToCSV();
+//        hashTable2000.writeToCSV();
+//        hashTable5000.writeToCSV();
+//        hashTable10000.writeToCSV();
     }
 }
