@@ -10,7 +10,7 @@ public class Word {
     }
 
     public String getValue(){
-        return value + ",";
+        return value ;
     }
 
     public int getOccurrences(){

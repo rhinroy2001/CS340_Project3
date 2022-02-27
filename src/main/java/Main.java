@@ -19,10 +19,11 @@ public class Main {
             hashTable5000.put(word);
             hashTable10000.put(word);
         }
+        System.out.println("");
         hashTable500.writeToCSV();
-//        hashTable1000.writeToCSV();
+ //       hashTable1000.writeToCSV();
 //        hashTable2000.writeToCSV();
-//        hashTable5000.writeToCSV();
+ //         hashTable5000.writeToCSV();
 //        hashTable10000.writeToCSV();
     }
 }
